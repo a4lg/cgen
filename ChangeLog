@@ -1,3 +1,7 @@
+2021-09-10  Mike Frysinger  <vapier@gentoo.org>
+
+	* desc-cpu.scm: Include stdlib.h.
+
 2021-06-28  Mike Frysinger  <vapier@gentoo.org>
 
 	* sim-decode.scm (cgen-decode.c): Add cgen-mem.h & cgen-ops.h includes.
@@ -357,7 +361,7 @@
 
 	* mep.opc: Apply patches from opcodes to compile with -Wshadow.
 	mep-asm.c now regenerates correctly again.
-	
+
 	* gen-all: Add support for building gcc/newlib.
 	Specify --prefix and install all built tools.
 
@@ -676,7 +680,7 @@
 	* opcode.scm (<ifield>, 'gen-insert): Use ifld-decode-mode instead of
 	ifld-encode-mode.
 	(<multi-ifield>, 'gen-insert): Ditto.
-	
+
 2009-10-05  Dave Korn  <dave.korn.cygwin@googlemail.com>
 
 	* sim-model.scm (@cpu@_prepare_run): Use @prefix@, not @cpu@,
@@ -987,7 +991,7 @@
 	* insn.scm (/parse-insn-format): New arg `verify?', all callers updated.
 	Improve error message for missing or too many bits.
 	(/insn-parse): Don't verify iformat for virtual insns.
-	
+
 	* sid-decode.scm (cgen-decode.cxx): Remove redundant call to
 	non-multi-insns.
 	* sid-model.scm (/gen-model-insn-fn-decls): Ditto.
@@ -1941,7 +1945,7 @@
 	(cmovc): move to after field definitions, use ivc2-specific
 	register names.
 	(cpmovi_b_P0S_P1): New.
-	
+
 2009-05-19  DJ Delorie  <dj@redhat.com>
 
 	* cpu/mep.opc: Regenerate configuration.
@@ -1966,7 +1970,7 @@
 	(mep_examine_ivc2_insns): New.
 	(mep_print_insn_set_ivc2_mode): New.
 	(mep_print_insn): Support IVC2 slotting.
-	
+
 2009-04-20  DJ Delorie  <dj@redhat.com>
 
 	* intrinsics.scm (intrinsics-analyze!): Include aliases.
@@ -1984,7 +1988,7 @@
 	(dsp0,dsp1): Rewrite as aliases so that intrinsics are generated.
 	* cpu/mep-core.cpu (extend-cdisp10): New.
 	(f-cdisp10): Change to signed, use extend-cdisp10 to sign extend.
-	
+
 2009-04-08  DJ Delorie  <dj@redhat.com>
 
 	* cpu/mep-c5.cpu: New.
@@ -2023,9 +2027,9 @@
 
 2007-09-21  Dave Brolley  <brolley@redhat.com>
 
-	* cpu/mep-core.cpu (rnc, rnuc, rns, rnus, rn3c, rn3uc, rn3s) 
+	* cpu/mep-core.cpu (rnc, rnuc, rns, rnus, rn3c, rn3uc, rn3s)
 	(rn3us): CDATA attribute now LONG.
-	
+
 2007-08-21  Dave Brolley  <brolley@redhat.com>
 
 	* rtl-c.scm (const): Generate call to MAKEDI for integers larger
@@ -2134,12 +2138,12 @@
 	(default-insn-word-bitsize 32). Change base-insn-bitsize to 32.
 	(define-mach): Add sh2e, sh2a-fpu, sh2a-nofpu, sh4-nofpu, sh4a-nofpu,
 	sh4a, sh4al
-	(SH2-MACH, SH2e-MACH, SH2a-nofpu-MACH, SH2a-MACH, SH3-MACH) 
-	(SH3e-MACH, SH4-nofpu-MACH, SH4-MACH, SH4a-nofpu-MACH, SH4a-MACH) 
+	(SH2-MACH, SH2e-MACH, SH2a-nofpu-MACH, SH2a-MACH, SH3-MACH)
+	(SH3e-MACH, SH4-nofpu-MACH, SH4-MACH, SH4a-nofpu-MACH, SH4a-MACH)
 	(SH4al-MACH, SH5-MACH): New pmacros.
-	(common-units, common-fp-units, sh2a-nofpu-units, sh2a-fpu-units) 
-	(sh4-nofpu-units, sh4-common-fp-units, sh5-media-units) 
-	(sh5-media-fp-units, common-model, common-model-with-fp) 
+	(common-units, common-fp-units, sh2a-nofpu-units, sh2a-fpu-units)
+	(sh4-nofpu-units, sh4-common-fp-units, sh5-media-units)
+	(sh5-media-fp-units, common-model, common-model-with-fp)
 	(sh3-model, sh3e-model): New pmacros.
 	(define-model sh2): New model.
 	(define-model sh2e): New model.
@@ -2154,8 +2158,8 @@
 	(define-model sh4al): New model.
 	(define-model sh5-media): New model.
 	(define-model sh5): Add all units.
-	(all-models, sh2e-models, sh2a-nofpu-models, sh2a-fpu-models) 
-	(sh3-models, sh3e-models, sh4-nofpu-models, sh4-models) 
+	(all-models, sh2e-models, sh2a-nofpu-models, sh2a-fpu-models)
+	(sh3-models, sh3e-models, sh4-nofpu-models, sh4-models)
 	(sh5-media-models, shad-models, fsqrt-models): New pmacros.
 	(h-pc): Add PROFILE attribute.
 	(h-fr): Likewise.

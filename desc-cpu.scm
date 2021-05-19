@@ -1041,6 +1041,7 @@ extern \"C\" {
 #include \"sysdep.h\"
 #include <stdio.h>
 #include <stdarg.h>
+#include <stdlib.h>
 #include \"ansidecl.h\"
 #include \"bfd.h\"
 #include \"symcat.h\"
