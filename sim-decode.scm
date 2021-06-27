@@ -583,7 +583,10 @@ const IDESC *
 #define WANT_CPU_@CPU@
 
 #include \"sim-main.h\"
-#include \"sim-assert.h\"\n\n"
+#include \"sim-assert.h\"
+#include \"cgen-mem.h\"
+#include \"cgen-ops.h\"
+\n"
 
    (lambda () (/gen-decode-insn-globals (non-multi-insns (non-alias-insns (current-insn-list)))))
    /gen-idesc-init-fn
