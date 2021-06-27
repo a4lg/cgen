@@ -922,7 +922,8 @@ SEM_FN_NAME (@prefix@,init_idesc_table) (SIM_CPU *current_cpu)
 
 "
    /gen-cpu-reg-access-defns
-   /gen-cpu-record-results
+   ; This code isn't ready yet.
+   ; /gen-cpu-record-results
    )
 )
 
