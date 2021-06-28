@@ -1361,7 +1361,7 @@
 
 (define (/gen-mach-data)
   (string-append
-   "const MACH *sim_machs[] =\n{\n"
+   "const MACH * const sim_machs[] =\n{\n"
    (string-map (lambda (mach)
 		 (gen-obj-sanitize
 		  mach
