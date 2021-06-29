@@ -1475,7 +1475,8 @@
 
 (define (/gen-mach-data)
   (string-append
-   "const SIM_MACH * const sim_machs[] =\n{\n"
+   "const SIM_MACH * const " (symbol->string (current-arch-name))
+   "_sim_machs[] =\n{\n"
    (string-map (lambda (mach)
 		 (gen-obj-sanitize
 		  mach
