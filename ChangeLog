@@ -1,5 +1,9 @@
 2021-09-14  Mike Frysinger  <vapier@gentoo.org>
 
+	* MAINTAINERS: New file.
+
+2021-09-14  Mike Frysinger  <vapier@gentoo.org>
+
 	* sim-cpu.scm (cgen-cpu.c): Comment out /gen-cpu-record-results.
 
 2021-09-14  Mike Frysinger  <vapier@gentoo.org>
