@@ -1,3 +1,12 @@
+2021-09-15  Guillermo E. Martinez  <guillermo.e.martinez@oracle.com>
+
+	* ifield.scm: word-len has a relative value depending of word-offset
+	value, method field-value use word-offset parameter.
+	* insn.scm: remove condition ifld-beyond-base? in insn-base-value
+	procedure to allow field access when its offset is different to zero.
+	* utils.scm: word-value/work-mask accept an offset as argument to
+	compute the mask and get the value when offset is different that zero.
+
 2021-09-14  Mike Frysinger  <vapier@gentoo.org>
 
 	* MAINTAINERS: New file.

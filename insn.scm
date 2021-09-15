@@ -982,9 +982,7 @@
       (elm-get insn '/insn-base-value)
       (let* ((base-len (insn-base-mask-length insn))
 	     (constant-base-iflds
-	      (find (lambda (f)
-		      (and (ifld-constant? f)
-			   (not (ifld-beyond-base? f))))
+	      (find ifld-constant?
 		    (ifields-base-ifields (insn-iflds insn))))
 	     (base-value (apply +
 				(map (lambda (f)

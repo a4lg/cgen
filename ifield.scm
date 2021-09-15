@@ -216,16 +216,13 @@
      (let ((lsb0? (bitrange-lsb0? bitrange))
 	   (start (bitrange-start bitrange))
 	   (length (bitrange-length bitrange))
-	   (word-length (or (and (= word-offset 0) base-len)
-			    recorded-word-length))
+		 (word-length base-len)
 	   (container-word-offset (bitrange-word-offset container))
 	   (container-word-length (bitrange-word-length container)))
        (cond
 	; must be same lsb0
 	((not (eq? lsb0? (bitrange-lsb0? container)))
 	 (error "field-mask: different lsb0? values"))
-	((not (= word-length container-word-length))
-	 0)
 	; container occurs after?
 	((<= (+ word-offset word-length) container-word-offset)
 	 0)
@@ -233,7 +230,7 @@
 	((>= word-offset (+ container-word-offset container-word-length))
 	 0)
 	(else
-	 (word-mask start length word-length lsb0? #f))))))
+	 (word-mask start length word-length word-offset lsb0? #f))))))
 )
 
 (define (ifld-mask ifld base-len container)
@@ -251,11 +248,11 @@
    (let* ((bitrange (/ifld-bitrange self))
 	  (recorded-word-length (bitrange-word-length bitrange))
 	  (word-offset (bitrange-word-offset bitrange))
-	  (word-length (or (and (= word-offset 0) base-len)
-			   recorded-word-length)))
+		 (word-length base-len))
      (word-value (ifld-start self)
 		 (bitrange-length bitrange)
 		 word-length
+		 word-offset
 		 (bitrange-lsb0? bitrange) #f
 		 value)))
 )
@@ -441,7 +438,6 @@
 ; collision with the proc named `length'.
 ;
 ; FIXME: More error checking.
-
 (define (/ifield-parse context name comment attrs
 		       word-offset word-length start flength follows
 		       mode encode decode)

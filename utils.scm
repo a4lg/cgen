@@ -797,37 +797,39 @@
 
 (define (minmax min max) (cons min max))
 
-; Move VALUE of LENGTH bits to position START in a word of SIZE bits.
+; Move VALUE of LENGTH bits to position START plus an OFFSET bits
+; in a word of SIZE bits.
 ; LSB0? is non-#f if bit numbering goes LSB->MSB.
 ; Otherwise it goes MSB->LSB.
 ; START-LSB? is non-#f if START denotes the least significant bit.
 ; Otherwise START denotes the most significant bit.
 ; N is assumed to fit in the field.
 
-(define (word-value start length size lsb0? start-lsb? value)
+(define (word-value start length size offset lsb0? start-lsb? value)
   (if lsb0?
       (if start-lsb?
 	  (logsll value start)
-	  (logsll value (+ (- start length) 1)))
+	  (logsll value (+ (- start length) offset 1)))
       (if start-lsb?
 	  (logsll value (- size start 1))
-	  (logsll value (- size (+ start length)))))
+	  (logsll value (- size (+ start length offset)))))
 )
 
-; Return a bit mask of LENGTH bits in a word of SIZE bits starting at START.
+; Return a bit mask of LENGTH bits in a word of SIZE bits starting
+; at START plus an OFFSET bits.
 ; LSB0? is non-#f if bit numbering goes LSB->MSB.
 ; Otherwise it goes MSB->LSB.
 ; START-LSB? is non-#f if START denotes the least significant bit.
 ; Otherwise START denotes the most significant bit.
 
-(define (word-mask start length size lsb0? start-lsb?)
+(define (word-mask start length size offset lsb0? start-lsb?)
   (if lsb0?
       (if start-lsb?
 	  (logsll (mask length) start)
-	  (logsll (mask length) (+ (- start length) 1)))
+	  (logsll (mask length) (+ (- start length) offset 1)))
       (if start-lsb?
 	  (logsll (mask length) (- size start 1))
-	  (logsll (mask length) (- size (+ start length)))))
+	  (logsll (mask length) (- size (+ start length offset)))))
 )
 
 ; Extract LENGTH bits at bit number START in a word of SIZE bits from VALUE.
