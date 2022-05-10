@@ -509,7 +509,7 @@ static unsigned int dis_hash_insn (const char *, CGEN_INSN_INT);
     "    "
     (gen-syntax-entry "MNEM" "OP" (minsn-syntax minsn) (obj-isa-list minsn))
     ",\n"
-    "    (PTR) & macro_" (gen-sym minsn) "_expansions[0],\n"
+    "    & macro_" (gen-sym minsn) "_expansions[0],\n"
     "    "
     (gen-obj-attr-defn 'minsn minsn all-attrs num-non-bools gen-insn-attr-mask)
     "\n"
@@ -532,7 +532,7 @@ static unsigned int dis_hash_insn (const char *, CGEN_INSN_INT);
     "    "
     (gen-syntax-entry "MNEM" "OP" (minsn-syntax minsn) (obj-isa-list minsn))
     ",\n"
-    "    (PTR) & macro_" (gen-sym minsn) "_expansions[0],\n"
+    "    & macro_" (gen-sym minsn) "_expansions[0],\n"
     "    "
     (gen-obj-attr-defn 'minsn minsn all-attrs num-non-bools gen-insn-attr-mask)
     "\n"

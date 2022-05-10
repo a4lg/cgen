@@ -154,7 +154,7 @@ static const CGEN_ATTR_ENTRY bool_attr[] =
 (method-make!
  <keyword> 'gen-table-entry
  (lambda (self)
-   (string-append "CGEN_ASM_KEYWORD, (PTR) " (send self 'gen-ref) ", "))
+   (string-append "CGEN_ASM_KEYWORD, " (send self 'gen-ref) ", "))
 )
 
 ; Return the C code to initialize a keyword.

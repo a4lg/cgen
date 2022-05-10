@@ -409,7 +409,7 @@ const CGEN_HW_ENTRY @arch@_cgen_hw_table[] =
 	      (set! field-count (number->string (length (elm-get fld 'subfields)))))
 	    ; else	    
 	      (set! field-ref (string-append "&@arch@_cgen_ifld_table[" (ifld-enum fld) "]"))))
-    (string-append "{ " field-count ", { (const PTR) " field-ref " } }")))
+    (string-append "{ " field-count ", { " field-ref " } }")))
 
 (define (gen-multi-ifield-nodes)
   (let ((multis (find multi-ifield? (current-ifld-list))))
@@ -433,7 +433,7 @@ const CGEN_HW_ENTRY @arch@_cgen_hw_table[] =
 		(apply string-append 
 		       (map (lambda (x) (string-append "\n    " (gen-maybe-multi-ifld 'ifield x) ",")) 
 			    (elm-get ifld 'subfields)))
-		"\n    { 0, { (const PTR) 0 } }\n};\n"))
+		"\n    { 0, { 0 } }\n};\n"))
 	     multis)))))
 
 (define (gen-operand-table)
@@ -475,7 +475,7 @@ const CGEN_OPERAND @arch@_cgen_operand_table[] =
 			      )))))
       (current-op-list))
      "/* sentinel */\n\
-  { 0, 0, 0, 0, 0,\n    { 0, { (const PTR) 0 } },\n    " (gen-obj-attr-end-defn all-attrs num-non-bools) " }
+  { 0, 0, 0, 0, 0,\n    { 0, { 0 } },\n    " (gen-obj-attr-end-defn all-attrs num-non-bools) " }
 };
 
 #undef A
