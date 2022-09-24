@@ -48,7 +48,7 @@ static const struct insn_sem @prefix@_insn_sem[] =
 	(string-list
 	 "  { "
 	 (if virtual?
-	     (string-append "VIRTUAL_INSN_" (string-upcase name) ", ")
+	     (string-append "(CGEN_INSN_TYPE) VIRTUAL_INSN_" (string-upcase name) ", ")
 	     (string-append "@ARCH@_INSN_" (string-upcase name) ", "))
          (string-append "@PREFIX@_INSN_" (string-upcase name) ", ")
 	 "@PREFIX@_" (/gen-fmt-enum (insn-sfmt insn))
@@ -72,7 +72,7 @@ static const struct insn_sem @prefix@_insn_sem[] =
 
 static const struct insn_sem @prefix@_insn_sem_invalid =
 {
-  VIRTUAL_INSN_X_INVALID, @PREFIX@_INSN_X_INVALID, @PREFIX@_SFMT_EMPTY"
+  (CGEN_INSN_TYPE) VIRTUAL_INSN_X_INVALID, @PREFIX@_INSN_X_INVALID, @PREFIX@_SFMT_EMPTY"
    (if (and (with-parallel?) (not (with-parallel-only?)))
        ", NOPAR, NOPAR"
        "")
